@@ -16,7 +16,6 @@ final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension impleme
 {
     use PrependDoctrineMigrationsTrait;
 
-    /** @psalm-suppress UnusedVariable */
     public function load(array $configs, ContainerBuilder $container): void
     {
         /** @var ConfigurationInterface $configuration */
@@ -29,6 +28,10 @@ final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension impleme
 
     public function prepend(ContainerBuilder $container): void
     {
+        $config = $this->getCurrentConfiguration($container);
+
+//        $this->registerResources('acme_awesome', 'doctrine/orm', $config['resources'], $container);
+
         $this->prependDoctrineMigrations($container);
     }
 
@@ -47,5 +50,15 @@ final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension impleme
         return [
             'Sylius\Bundle\CoreBundle\Migrations',
         ];
+    }
+
+    private function getCurrentConfiguration(ContainerBuilder $container): array
+    {
+        /** @var ConfigurationInterface $configuration */
+        $configuration = $this->getConfiguration([], $container);
+
+        $configs = $container->getExtensionConfig($this->getAlias());
+
+        return $this->processConfiguration($configuration, $configs);
     }
 }
