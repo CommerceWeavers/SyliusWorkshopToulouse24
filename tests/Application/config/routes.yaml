@@ -1,0 +1,9 @@
+acme_sylius_awesome_shop:
+    resource: "@AcmeSyliusAwesomePlugin/config/shop_routing.yml"
+    prefix: /{_locale}
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+
+acme_sylius_awesome_admin:
+    resource: "@AcmeSyliusAwesomePlugin/config/admin_routing.yml"
+    prefix: /admin

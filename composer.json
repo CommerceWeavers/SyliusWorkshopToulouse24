@@ -1,0 +1,68 @@
+{
+    "name": "acme/sylius-awesome-plugin",
+    "description": "My brand new Sylius plugin!",
+    "type": "sylius-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Acme\\SyliusAwesomePlugin\\": "src/",
+            "Tests\\Acme\\SyliusAwesomePlugin\\Behat\\": "tests/Behat"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Acme\\SyliusAwesomePlugin\\": "tests/",
+            "App\\": "tests/Application/src/"
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "sylius/core-bundle": "^1.12"
+    },
+    "conflict": {
+        "sylius/sylius": "<1.12"
+    },
+    "require-dev": {
+        "ext-readline": "*",
+        "polishsymfonycommunity/symfony-mocker-container": "^1.0",
+        "sylius/sylius": "^1.12",
+        "symfony/debug-bundle": "^5.4 || ^6.0",
+        "symfony/dotenv": "^5.4 || ^6.0",
+        "symfony/flex": "^2.2.2",
+        "symfony/intl": "^5.4 || ^6.0",
+        "symfony/web-profiler-bundle": "^5.4 || ^6.0"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": false,
+            "phpstan/extension-installer": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        },
+        "symfony": {
+            "require": "^5.4"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php bin/create_node_symlink.php"
+        ],
+        "post-update-cmd": [
+            "php bin/create_node_symlink.php"
+        ],
+        "post-create-project-cmd": [
+            "php bin/create_node_symlink.php"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "security-checker security:check": "script"
+        }
+    }
+}
