@@ -14,6 +14,4 @@ setup:
 	@cd tests/Application && bin/console doctrine:database:create --if-not-exists
 	@cd tests/Application && bin/console doctrine:migrations:migrate -n
 	@cd tests/Application && bin/console sylius:fixtures:load -n
-	@cd tests/Application && bin/console doctrine:database:create --if-not-exists
-	@cd tests/Application && bin/console doctrine:migrations:migrate -n
-	@cd tests/Application && bin/console sylius:fixtures:load -n
+
