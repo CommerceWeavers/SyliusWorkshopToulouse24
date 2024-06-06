@@ -12,12 +12,18 @@ imports:
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
 
+sylius_core:
+    autoconfigure_with_attributes: true
+
 sylius_shop:
     product_grid:
         include_all_descendants: true
 
 sylius_api:
     enabled: true
+    
+sylius_state_machine_abstraction:
+    default_adapter: symfony_workflow
 
 sylius_product:
     resources:
