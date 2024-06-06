@@ -39,6 +39,14 @@ return static function (ContainerConfigurator $containerConfigurator) {
                     ],
                 ],
             ],
+            'sylius.admin.product.tab_details' => [
+                'blocks' => [
+                    'acme_sylius_awesome_admin_product_service' => [
+                        'template' => '@AcmeSyliusAwesomePlugin/Admin/Product/_service.html.twig',
+                        'priority' => 5,
+                    ]
+                ]
+            ]
         ],
     ]);
 };
