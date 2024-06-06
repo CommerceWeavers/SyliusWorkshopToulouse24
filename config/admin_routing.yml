@@ -1,1 +1,10 @@
 # Define your own admin routes here
+
+acme_admin_service:
+    resource: |
+        alias: acme_awesome.service
+        section: admin
+        templates: '@SyliusAdmin/Crud'
+        grid: acme_awesome_admin_service
+        redirect: index
+    type: sylius.resource
