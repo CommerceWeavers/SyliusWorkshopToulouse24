@@ -10,7 +10,7 @@ use Sylius\Bundle\GridBundle\Config\GridConfig;
 
 return static function (GridConfig $grid) {
     $grid->addGrid(
-        GridBuilder::create('acme_awesome.service', \Acme\SyliusAwesomePlugin\Entity\Service::class)
+        GridBuilder::create('acme_awesome.service', resourceClass: '%acme_awesome.model.service.class%')
             ->addField(
                 StringField::create('id')
             )

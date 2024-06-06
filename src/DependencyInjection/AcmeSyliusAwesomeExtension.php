@@ -34,7 +34,7 @@ final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension impleme
     {
         $config = $this->getCurrentConfiguration($container);
 
-//        $this->registerResources('acme_awesome', 'doctrine/orm', $config['resources'], $container);
+        $this->registerResources('acme_awesome', 'doctrine/orm', $config['resources'], $container);
 
         $this->prependDoctrineMigrations($container);
     }
