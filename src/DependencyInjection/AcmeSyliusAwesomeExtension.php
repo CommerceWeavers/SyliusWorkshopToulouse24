@@ -23,8 +23,6 @@ final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension impleme
 
         $configs = $this->processConfiguration($configuration, $configs);
 
-        $this->registerResources('acme_awesome', 'doctrine/orm', $configs['resources'], $container);
-
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
 
         $loader->load('services.php');
