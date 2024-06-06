@@ -6,10 +6,11 @@ namespace Acme\SyliusAwesomePlugin\DependencyInjection;
 
 use Sylius\Bundle\CoreBundle\DependencyInjection\PrependDoctrineMigrationsTrait;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
 final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
@@ -18,9 +19,12 @@ final class AcmeSyliusAwesomeExtension extends AbstractResourceExtension impleme
     /** @psalm-suppress UnusedVariable */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
+        /** @var ConfigurationInterface $configuration */
+        $configuration = $this->getConfiguration([], $container);
 
-        $loader->load('services.xml');
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
+
+        $loader->load('services.php');
     }
 
     public function prepend(ContainerBuilder $container): void
