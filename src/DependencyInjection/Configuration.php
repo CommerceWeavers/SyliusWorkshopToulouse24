@@ -6,6 +6,7 @@ namespace Acme\SyliusAwesomePlugin\DependencyInjection;
 
 use Acme\SyliusAwesomePlugin\Entity\Service;
 use Acme\SyliusAwesomePlugin\Entity\ServiceInterface;
+use Acme\SyliusAwesomePlugin\Form\Type\ServiceFormType;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\ResourceBundle\Form\Type\DefaultResourceType;
@@ -48,7 +49,7 @@ final class Configuration implements ConfigurationInterface
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->defaultValue(EntityRepository::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(DefaultResourceType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(ServiceFormType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()
