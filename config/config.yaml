@@ -1,8 +1,2 @@
 imports:
     - { resource: 'packages/**/**' }
-
-sylius_resource:
-    resources:
-        acme_awesome.service:
-            classes:
-                model: Acme\SyliusAwesomePlugin\Entity\Service
